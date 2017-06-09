@@ -20,17 +20,16 @@ def numericTagger(instr):
         for index,item in enumerate(instr):
             if(type(item) == tup):
                 if num_match.search(str(item[0])):
-                    instr[index] = (instr[index][1],'any')
+                    instr[index] = (instr[index][1],'num')
             else:
                 if num_match.search(str(item)):
-                    instr[index] = (instr[index], 'any')
+                    instr[index] = (instr[index], 'num')
                 
                     
     else: 
         if(type(instr) == string):
             instr = tok.tokenize(instr)
             numericTagger(instr)
-            
         else:
             print("not supported")
 
