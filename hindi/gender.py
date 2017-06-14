@@ -10,62 +10,47 @@ import sangita.hindi.tokenizer as tok
 import sangita.hindi.corpora.gender as gndr
 
 def numericTagger(instr):
-    lst = type([1,2,3])
+    lst = type([1, 2, 3])
     tup = type(("Hello", "Hi"))
     string = type("Hello")
-    
     num_match = re.compile(r'([०१२३४५६७८९]+[\.\,]*)+[०१२३४५६७८९]+|([-+]*\d+[\.\,]*)+\d+|([०१२३४५६७८९]+|\d+)')
-    
-    if(type(instr) == lst):
-        for index,item in enumerate(instr):
-            if(type(item) == tup):
+    if type(instr) == lst:
+        for index, item in enumerate(instr):
+            if type(item) == tup:
                 if num_match.search(str(item[0])):
-                    instr[index] = (instr[index][1],'num')
+                    instr[index] = (instr[index][1], 'num')
             else:
                 if num_match.search(str(item)):
                     instr[index] = (instr[index], 'num')
-                
-                    
     else: 
-        if(type(instr) == string):
+        if type(instr) == string:
             instr = tok.tokenize(instr)
             numericTagger(instr)
         else:
             print("not supported")
 
-    return(instr)
+    return instr
 
 def defaultTagger(instr):
-
-    lst = type([1,2,3])
+    lst = type([1, 2, 3])
     tup = type(("Hello", "Hi"))
     string = type("Hello")
-    
-
-    if(type(instr) == lst):
-        for index,item in enumerate(instr):
-            if(type(item) != tup):
+    if type(instr) == lst:
+        for index, item in enumerate(instr):
+            if type(item) != tup:
                 instr[index] = (instr[index], 'any')
-                
     else: 
-        if(type(instr) == string):
+        if type(instr) == string:
             instr = tok.tokenize(instr)
             defaultTagger(instr)
-            
         else:
             print("not supported")
-
-    return(instr)
-    
-
-    
+    return instr
 
 def lookupTagger(instr):
-    
-    lst = type([1,2,3])
+    lst = type([1, 2, 3])
     tup = type(("Hello", "Hi"))
     string = type("Hello")
-    
     gndrlst = gndr.drawlist()
     words = []
     genders = []
