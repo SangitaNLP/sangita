@@ -15,21 +15,21 @@ import gensim
 import logging
 import numpy as np
 import re
+import sangita_data.hindi.sentences.loadsent as sents
+import operator 
 
 def genderdecode(genderTag):
     """
     one-hot decoding for the gender tag predicted by the classfier
     Dimension = 2. 
     """
-    if genderTag == [1,0]:
-        code = 'm'
-    if genderTag == [0,1]:
-        code = 'f'
-    if genderTag == [1, 1]:
-        code = 'any'
-    if genderTag == [0,0]:
-        code = 'num'
-    return code
+    index, value = max(enumerate(genderTag), key=operator.itemgetter(1))
+    if index == 0:
+        return 'm'
+    if index == 1:
+        return 'f'
+    if index == 2:
+        return 'any'
 
 def numericTagger(instr):
     """
@@ -145,10 +145,11 @@ def genderclassify(sentence):
     :rtype: List of Tuples.
     """
     sentences = sent.drawlist()
-    sentences = [tok.tokenize(i) for i in sentences]
-
-    sentence = tok.tokenize(sentence)
-    sentences.append(sentence)
+    sentences2 = sents.drawlist()
+    sentences2.append(sentence)
+    sentences = sentences + sentences2
+    sentences = [tok.wordtokenize(i) for i in sentences]
+    sentence = tok.wordtokenize(sentence) 
 
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
     model = gensim.models.Word2Vec(sentences, size =10,  min_count=1)
