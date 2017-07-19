@@ -75,11 +75,11 @@ def RuleTagger(lst):
                     for rule in tri:
                         if(lst[index+1][1] == rule[0][1] and lst[index+2][1] == rule[0][2]):
                             suggestions.append([rule[0], rule[1], 0])
-            if index<(len(lst)-2):
-                if(lst[index+1][1] != None and lst[index+2][1]!= None):
+            if index>(1):
+                if(lst[index-1][1] != None and lst[index-2][1]!= None):
                     for rule in tri:
-                        if(lst[index+1][1] == rule[0][1] and lst[index+2][1] == rule[0][2]):
-                            suggestions.append([rule[0], rule[1], 0])
+                        if(lst[index-2][1] == rule[0][0] and lst[index-1][1] == rule[0][1]):
+                            suggestions.append([rule[0], rule[1], 2])
             if len(suggestions) != 0:
                 count = [i[1] for i in suggestions]
                 index = (count.index(max(count)))
