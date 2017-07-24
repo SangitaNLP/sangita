@@ -7,13 +7,19 @@ IIT Kharagpur
 """
 
 
-import tokenizer
-import corpora.unigrampos as unigram 
-import corpora.bigrampos as bigram 
-import corpora.trigrampos as trigram
-import corpora.bigramrules as birules
-import corpora.trigramrules as trirules
+import sangita.hindi.tokenizer
+import sangita.hindi.corpora.unigrampos as unigram 
+import sangita.hindi.corpora.bigrampos as bigram 
+import sangita.hindi.corpora.trigrampos as trigram
+import sangita.hindi.corpora.bigramrules as birules
+import sangita.hindi.corpora.trigramrules as trirules
 
+def bigramFinder(rule):
+    bi = birules.drawlist()
+    rules = [i[0] for i in bi]
+    index = rules.index(rule)
+    return index
+    
 def NoneTagger(lst):
     for index, item  in enumerate(lst):
         lst[index] = (item, None)
@@ -69,16 +75,28 @@ def RuleTagger(lst):
                 if(lst[index-1][1] != None and lst[index+1][1]!= None):
                     for rule in tri:
                         if(lst[index-1][1] == rule[0][0] and lst[index+1][1] == rule[0][2]):
-                            suggestions.append([rule[0], rule[1], 1])
+                            biIndex1 = bigramFinder([rule[0][0], rule[0][1]])
+                            count1 = bi[biIndex1][1]
+                            biIndex2 = bigramFinder([rule[0][1], rule[0][2]])
+                            count2 = bi[biIndex2][1]
+                            suggestions.append([rule[0], count1 + count2 - rule[1], 1])
             if index<(len(lst)-2):
                 if(lst[index+1][1] != None and lst[index+2][1]!= None):
                     for rule in tri:
                         if(lst[index+1][1] == rule[0][1] and lst[index+2][1] == rule[0][2]):
+                            biIndex1 = bigramFinder([rule[0][0], rule[0][1]])
+                            count1 = bi[biIndex1][1]
+                            biIndex2 = bigramFinder([rule[0][1], rule[0][2]])
+                            count2 = bi[biIndex2][1]
                             suggestions.append([rule[0], rule[1], 0])
             if index>(1):
                 if(lst[index-1][1] != None and lst[index-2][1]!= None):
                     for rule in tri:
                         if(lst[index-2][1] == rule[0][0] and lst[index-1][1] == rule[0][1]):
+                            biIndex1 = bigramFinder([rule[0][0], rule[0][1]])
+                            count1 = bi[biIndex1][1]
+                            biIndex2 = bigramFinder([rule[0][1], rule[0][2]])
+                            count2 = bi[biIndex2][1]
                             suggestions.append([rule[0], rule[1], 2])
             if len(suggestions) != 0:
                 count = [i[1] for i in suggestions]
@@ -90,9 +108,19 @@ def RuleTagger(lst):
             
     return lst
 
+def tagger(lst):
+    if isinstance(lst) == str:
+        lst = tokenizer.tokenize(lst)
+    lst = NoneTagger(lst)
+    lst = UnigramTagger(lst)
+    lst = BigramTagger(lst)
+    lst = TrigramTagger(lst)
+    lst = RuleTagger(lst)
+    return lst
 
-print(UnigramTagger(NoneTagger(tokenizer.tokenize("पालगी भईया कहते हुए धूलीचन्द पांव छूआ और सामने खड़े होकर भीखनरायन की दीन - दशा को चकित होकर निहारने लगा ।"))))
-print(BigramTagger(UnigramTagger(NoneTagger(tokenizer.tokenize("पालगी भईया कहते हुए धूलीचन्द पांव छूआ और सामने खड़े होकर भीखनरायन की दीन - दशा को चकित होकर निहारने लगा ।")))))
-print(TrigramTagger(BigramTagger(UnigramTagger(NoneTagger(tokenizer.tokenize("पालगी भईया कहते हुए धूलीचन्द पांव छूआ और सामने खड़े होकर भीखनरायन की दीन - दशा को चकित होकर निहारने लगा ।"))))))
-print(RuleTagger(UnigramTagger(NoneTagger(tokenizer.tokenize("मुझे इस जीवन से प्यार है मैं इस जीवन को यथासंभव लंबे समय तक जीना चाहता हूं।")))))
-print((UnigramTagger(NoneTagger(tokenizer.tokenize("मुझे इस जीवन से प्यार है मैं इस जीवन को यथासंभव लंबे समय तक जीना चाहता हूं।")))))
+if __name__ == "__main__":
+    print(UnigramTagger(NoneTagger(tokenizer.tokenize("पालगी भईया कहते हुए धूलीचन्द पांव छूआ और सामने खड़े होकर भीखनरायन की दीन - दशा को चकित होकर निहारने लगा ।"))))
+    print(BigramTagger(UnigramTagger(NoneTagger(tokenizer.tokenize("पालगी भईया कहते हुए धूलीचन्द पांव छूआ और सामने खड़े होकर भीखनरायन की दीन - दशा को चकित होकर निहारने लगा ।")))))
+    print(TrigramTagger(BigramTagger(UnigramTagger(NoneTagger(tokenizer.tokenize("पालगी भईया कहते हुए धूलीचन्द पांव छूआ और सामने खड़े होकर भीखनरायन की दीन - दशा को चकित होकर निहारने लगा ।"))))))
+    print(RuleTagger(UnigramTagger(NoneTagger(tokenizer.tokenize("मुझे इस जीवन से प्यार है मैं इस जीवन को यथासंभव लंबे समय तक जीना चाहता हूं।")))))
+    print((UnigramTagger(NoneTagger(tokenizer.tokenize("मुझे इस जीवन से प्यार है मैं इस जीवन को यथासंभव लंबे समय तक जीना चाहता हूं।")))))
