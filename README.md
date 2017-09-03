@@ -5,5 +5,5 @@ Part of Samriddhi Sinha's project for Google Summer of Code 2017 under Portland 
 Install from source as :
 
 ````
-pip install git+https://github.com/jkbr/httpie.git
+pip install git+https://github.com/djokester/sangita.git
 ````
