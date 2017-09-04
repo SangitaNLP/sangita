@@ -109,8 +109,8 @@ def RuleTagger(lst):
     return lst
 
 def tagger(lst):
-    if isinstance(lst) == str:
-        lst = tokenizer.tokenize(lst)
+    #if isinstance(lst) == str:
+    #    lst = tokenizer.tokenize(lst)
     lst = NoneTagger(lst)
     lst = UnigramTagger(lst)
     lst = BigramTagger(lst)
