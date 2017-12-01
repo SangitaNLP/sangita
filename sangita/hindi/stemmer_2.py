@@ -1,3 +1,4 @@
+#tabwidth set to 4
 import corpora.lemmata as lemma
 import tokenizer as tok
 import os
