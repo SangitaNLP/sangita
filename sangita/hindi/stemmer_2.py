@@ -17,6 +17,7 @@ def stemmer(string,mincount):
         inflections.append((i[0])[x:])
         inflections.append((i[1])[x:])
     inflections = set(inflections) - set([''])
+    words = []
     if isinstance(string,str):
         words = tok.wordtokenize(string)
         for index,item in enumerate(words):
@@ -24,4 +25,8 @@ def stemmer(string,mincount):
             for inflection in inflections:
                 temp.append(endsplit(item,inflection))
             words[index] = set(temp)
-        return words		
+    else:
+        print('Error: {} tokenization not supported.\n Returning empty list.'.format(type(string)))    
+    return words
+
+#print(stemmer(12435,2))			
