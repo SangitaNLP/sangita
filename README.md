@@ -13,6 +13,7 @@
 <div align = "center"><img src = "https://raw.githubusercontent.com/djokester/sangita/master/sangita/static/sangita.png" /></div>
 
 ### A Natural Language Toolkit for Indian Languages
+![](https://img.shields.io/badge/language-Hindi-red.svg?style=for-the-badge)
 
 ----------------
 
