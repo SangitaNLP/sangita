@@ -6,6 +6,7 @@
 
 <div align = "center"><img src = "https://raw.githubusercontent.com/djokester/sangita/master/sangita/static/sangita.png" /></div>
 ----------------
+
 A Natural Language Toolkit for Indian Languages
 Part of Samriddhi Sinha's project for Google Summer of Code 2017 under Portland State University.
 
