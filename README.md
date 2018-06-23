@@ -26,6 +26,10 @@
 ##### * Corpus is Stored at [Sangita Data](https://github.com/djokester/sangita_data)
 
 ## License 
+#### The code and the models are distributed under the Apache 2.0 License. 
+#### We have used the following datasets and their respective Liesnses are enclosed along with them. 
+* #### Hindi Dependency Treebank - LANGUAGE TECHNOLOGIES RESEARCH CENTER, IIIT Hyderabad.
+   * #### Creative Commons License Attribution-NonCommercial-ShareAlike 4.0 International.
 
 ## Contributions
 ### Issues relating to Girlscript Summer of Code are referenced with the respective tags: 
