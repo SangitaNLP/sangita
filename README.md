@@ -32,3 +32,5 @@
 ###### * [Pro](https://github.com/djokester/sangita/labels/Pro) - 30 points
 ##### * [TopCoder](https://github.com/djokester/sangita/labels/TopCoder) - 50 points
 
+#### You can look at the ongoing issues here on this [projrct board](https://github.com/djokester/sangita/projects/1)
+#### Check out the first evaluation milestone. 
