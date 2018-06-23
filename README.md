@@ -25,6 +25,8 @@
 ##### * Scikit Learn
 ##### * Corpus is Stored at [Sangita Data](https://github.com/djokester/sangita_data)
 
+## License 
+
 ## Contributions
 ### Issues relating to Girlscript Summer of Code are referenced with the respective tags: 
 ##### * [Cakewalk](https://github.com/djokester/sangita/labels/Cakewalk) - 10 points
@@ -33,4 +35,6 @@
 ##### * [TopCoder](https://github.com/djokester/sangita/labels/TopCoder) - 50 points
 
 #### You can look at the ongoing issues here on this [projrct board](https://github.com/djokester/sangita/projects/1)
-#### Check out the first evaluation milestone. 
+#### Check out the [first evaluation milestone](https://github.com/djokester/sangita/milestone/1)
+
+
