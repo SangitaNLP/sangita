@@ -23,7 +23,7 @@
 ## Dependencies 
 ##### * Keras
 ##### * Scikit Learn
-##### * Corpus is Stored at [Sangita Data](https://github.com/djokester/sangita_data)
+##### * Corpus is Stored at [Sangita Data](https://github.com/SangitaNLP/sangita_data)
 
 ## License 
 #### The code and the models are distributed under the Apache 2.0 License. 
@@ -33,12 +33,12 @@
 
 ## Contributions
 ### Issues relating to Girlscript Summer of Code are referenced with the respective tags: 
-##### * [Cakewalk](https://github.com/djokester/sangita/labels/Cakewalk) - 10 points
-##### * [Intermediate](https://github.com/djokester/sangita/labels/Intermediate) - 20 points
-###### * [Pro](https://github.com/djokester/sangita/labels/Pro) - 30 points
-##### * [TopCoder](https://github.com/djokester/sangita/labels/TopCoder) - 50 points
+##### * [Cakewalk](https://github.com/SangitaNLP/sangita/labels/Cakewalk) - 10 points
+##### * [Intermediate](https://github.com/SangitaNLP/sangita/labels/Intermediate) - 20 points
+###### * [Pro](https://github.com/SangitaNLP/sangita/labels/Pro) - 30 points
+##### * [TopCoder](https://github.com/SangitaNLP/sangita/labels/TopCoder) - 50 points
 
-#### You can look at the ongoing issues here on this [projrct board](https://github.com/djokester/sangita/projects/1)
-#### Check out the [first evaluation milestone](https://github.com/djokester/sangita/milestone/1)
+#### You can look at the ongoing issues here on this [project board](https://github.com/SangitaNLP/sangita/projects/1)
+#### Check out the [first evaluation milestone](https://github.com/SangitaNLP/sangita/milestone/1)
 
 
